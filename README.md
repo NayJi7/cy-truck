@@ -6,10 +6,6 @@ Cy-Truck is a collection of scripts and tools to sort, visualize and generate ch
 ![Output example](./data/README/s.png)
 ![Output example](./data/README/t.png)
 
-## ⚙️ Short description (for GitHub)
-
-Shell and C utilities to process and visualize CSV files: chunking, sorting, and automated image/chart generation.
-
 ## 🚀 Key features
 
 - Process and chunk large CSV files for faster handling
