@@ -1,43 +1,100 @@
+
 # Cy-Truck
 
-To array the manual you can use -h or --help options (./graph_sort -h | --help)
+Cy-Truck is a collection of scripts and tools to sort, visualize and generate charts from CSV data. The project provides a main script `graph_sort.sh` and compiled utilities in `progc/` to speed up certain operations.
 
----
+![Output example](./data/README/s.png)
+![Output example](./data/README/t.png)
 
-NEEDINGS
+## ⚙️ Short description (for GitHub)
 
-To use this programm you'll need linux or macos system.
+Shell and C utilities to process and visualize CSV files: chunking, sorting, and automated image/chart generation.
 
-You'll need 3 additional programs to run correctly graph_sort.sh
+## 🚀 Key features
 
-imagemagick, vlc and gnuplot
+- Process and chunk large CSV files for faster handling
+- Generate images and charts (via ImageMagick and gnuplot)
+- Customizable sorting and analysis options in `graph_sort.sh`
+- Compiled C utilities in `progc/` (`s_progc`, `t_progc`) for fast operations
 
-    Mac : brew install imagemagick | Ubuntu : sudo apt install imagemagick
+## 📦 Requirements
 
-    brew install --cask vlc  |          sudo apt install vlc
+- OS: Linux or macOS
+- Tools:
+  - ImageMagick
+  - VLC (for optional video output/processing)
+  - gnuplot
+  - make and gcc (to compile utilities in `progc/`)
 
-    brew install gnuplot     |          sudo apt-get install gnuplot
+Quick install examples:
 
----
+Mac (Homebrew):
 
-USAGE
+    brew install imagemagick
+    brew install --cask vlc
+    brew install gnuplot
 
-To execute the program you just have to type "./graph_sort.sh [FILE.csv] [OPTION]" for more precisions use -h or --help
+Ubuntu/Debian:
 
-The script will check if the temp and pictures files exist, if so temp's content will be removed. But if temp/ or pictures/ does not exist
-the'll be created and given all rights to the user
+    sudo apt update
+    sudo apt install imagemagick vlc gnuplot build-essential
 
-The script will cut the data.csv file in order to treat it faster. The cut result is stocked in temp/ with "?.temp" or "?_data.temp" name
+## 🔧 Installation and build
 
-In the progc directory you can use "make" command to compilate s_progc.c by using s_progc target, t_progc.c by using t_progc target
-and you can also rm the executables using the clean target. (You can also use -c option for a more complete clean)
+1. Clone the repository:
 
-Here is the data we used to make the program :
+    git clone https://github.com/NayJi7/cy-truck.git
+    cd cy-truck
 
-https://drive.google.com/file/d/1SnCcSl1XDZ4a0J0HMJj-qhmj-50dMcKd/view?usp=drive_link
+2. Build the C utilities (from `progc/`):
 
----
+    cd progc
+    make
 
-FINAL GRADE
+The `Makefile` includes targets `s_progc`, `t_progc` and `clean`.
 
-17/20
+## ▶️ Usage
+
+General usage:
+
+    ./graph_sort.sh [FILE.csv] [OPTIONS]
+
+Useful options:
+- `-h`, `--help`: show help and available options
+- `-t`, `-s`: example options handling different sorting/visualization modes (see help)
+
+Behavior:
+
+The script checks for the existence of `temp/` and `pictures/` directories. If present, temporary contents are cleaned; otherwise they will be created with normal user permissions.
+
+The script splits the CSV file into chunks (`temp/*.temp` or `temp/*_data.temp`) to handle large datasets more efficiently.
+
+## 📁 Repository structure
+
+- `graph_sort.sh`: main processing script
+- `progc/`: C utilities and `Makefile` (targets: `s_progc`, `t_progc`, `clean`)
+- `data/README/`: example output images (e.g. `t.png`, `s.png`)
+
+## 🧪 Quick test
+
+1. Place a small test CSV file (e.g. `test.csv`) at the repository root.
+2. Run:
+
+    ./graph_sort.sh test.csv
+
+Check the `temp/` and `pictures/` folders for intermediate files and generated images.
+
+## 📝 Notes
+
+- The original data used for demonstrations was lost, but examples are available in the project report here: [project report](https://github.com/NayJi7/cy-truck/blob/main/Group_review.pdf).
+- If you want to produce video output or work with multimedia, ensure VLC is installed and accessible from the command line.
+
+## 👥 Team
+
+<a href="https://github.com/NayJi7/cy-truck/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=NayJi7/cy-truck&refresh=true" />
+</a>
+
+## 🎓 Grade
+
+Final grade obtained for the project presentation: 17/20
